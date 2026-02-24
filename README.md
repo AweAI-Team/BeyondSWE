@@ -14,11 +14,15 @@
   <img src="figures/beyondswe.png" width="100%" />
 </p>
 
-**BeyondSWE** is a comprehensive benchmark that evaluates code agents along two key dimensions — **resolution scope** and **knowledge scope** — moving beyond single-repo bug fixing into the real-world deep waters of software engineering. We also introduce **SearchSWE**, a framework that integrates deep research capabilities with coding agents.
+<p align="center">
+  <b>BeyondSWE</b> is a comprehensive benchmark that evaluates code agents along two key dimensions — <b>resolution scope</b> and <b>knowledge scope</b> — moving beyond single-repo bug fixing into the real-world deep waters of software engineering.
+  <br>
+  We also introduce <b>SearchSWE</b>, a framework that integrates deep research capabilities with coding agents.
+</p>
 
 ---
 
-## Highlights
+## ✨ Highlights
 
 - **500 real-world instances** across **246 GitHub repositories**, spanning four distinct task settings
 - **Two-dimensional evaluation**: simultaneously expands both resolution scope (local → global) and knowledge scope (within-repo → cross-repo / domain / web)
@@ -28,11 +32,7 @@
 
 ---
 
-## Benchmark Overview
-
-<p align="center">
-  <img src="figures/beyondswe_statistics.png" width="85%" />
-</p>
+## 📋 Benchmark Overview
 
 BeyondSWE covers four task settings that span the full spectrum of real-world software engineering challenges:
 
@@ -43,9 +43,15 @@ BeyondSWE covers four task settings that span the full spectrum of real-world so
 | **🕊️ DepMigrate** | Global Repository | Official Docs | 120 | 178 | Perform codebase-wide migration triggered by breaking dependency upgrades (e.g., NumPy 1.x → 2.0) |
 | **📝 Doc2Repo** | Global Repository | Human Spec | 50 | 50 | Build an entire functional repository from a natural language specification |
 
+### Comparison with Existing Benchmarks
+
+<p align="center">
+  <img src="figures/beyondswe_statistics.png" width="85%" />
+</p>
+
 ---
 
-## SearchSWE Framework
+## 🔍 SearchSWE Framework
 
 <p align="center">
   <img src="figures/beyondswe_searchswe.png" width="90%" />
@@ -54,8 +60,8 @@ BeyondSWE covers four task settings that span the full spectrum of real-world so
 **SearchSWE** augments code agents with deep research capabilities, enabling them to interleave web search and code reasoning — just like real developers do.
 
 **Key Components:**
-- **SearchTool**: Query web search engines during task solving
-- **BrowserTool**: Retrieve and summarize webpage content given a URL and goal
+- **SearchTool** — Query web search engines during task solving
+- **BrowserTool** — Retrieve and summarize webpage content given a URL and goal
 
 **Anti-Cheating Mechanisms:**
 - Regex-based blocklist filters both search results and bash commands, blocking any access to the target repository (GitHub/GitLab pages, API endpoints, raw content sources, git operations)
@@ -65,7 +71,7 @@ BeyondSWE covers four task settings that span the full spectrum of real-world so
 
 ---
 
-## Results
+## 📈 Results
 
 <p align="center">
   <img src="figures/beyondswe_performance.png" width="95%" />
@@ -73,17 +79,17 @@ BeyondSWE covers four task settings that span the full spectrum of real-world so
 
 ### Key Findings
 
-**1. The 45% Ceiling**: Even frontier models (Gemini 3 Pro, GPT-5.2, DeepSeek-V3.2, etc.) fail to exceed 45% overall on BeyondSWE, compared to 80%+ on SWE-bench Verified.
+**1. The 45% Ceiling** — Even frontier models (Gemini 3 Pro, GPT-5.2, DeepSeek-V3.2, etc.) fail to exceed 45% overall on BeyondSWE, compared to 80%+ on SWE-bench Verified.
 
-**2. No Single Winner**: Different models lead on different tasks — Seed-Coder on CrossRepo (44.72%), DeepSeek-V3.2 on Doc2Repo (54.99%), Gemini 3 Pro on DepMigrate (41.81%) — revealing that the four tasks test fundamentally different capabilities.
+**2. No Single Winner** — Different models lead on different tasks — Seed-Coder on CrossRepo (44.72%), DeepSeek-V3.2 on Doc2Repo (54.99%), Gemini 3 Pro on DepMigrate (41.81%) — revealing that the four tasks test fundamentally different capabilities.
 
-**3. Search Helps, but Integration Remains an Open Problem**: 6 out of 9 models improve with SearchSWE, with Gemini 3 Pro gaining +7.5% on DomainFix. However, gains are inconsistent — search and coding have matured independently, but their effective fusion is still an unsolved challenge.
+**3. Search Helps, but Integration Remains Open** — 6 out of 9 models improve with SearchSWE, with Gemini 3 Pro gaining +7.5% on DomainFix. However, gains are inconsistent — search and coding have matured independently, but their effective fusion is still an unsolved challenge.
 
-**4. Quality over Quantity**: Gemini 3 Pro searches only 0.8–1.1 times per instance yet achieves the best overall gain (+2.0%), while DeepSeek-V3.2 searches 4.2–5.4 times but shows a slight decline (-0.2%).
+**4. Quality over Quantity** — Gemini 3 Pro searches only 0.8–1.1 times per instance yet achieves the best overall gain (+2.0%), while DeepSeek-V3.2 searches 4.2–5.4 times but shows a slight decline (-0.2%).
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Installation
 
@@ -108,7 +114,7 @@ Please refer to [**AweAgent**](https://github.com/AweAI-Team/AweAgent) for the f
 
 ---
 
-## Citation
+## 📝 Citation
 
 If you find BeyondSWE useful in your research, please cite our paper:
 
@@ -122,6 +128,14 @@ If you find BeyondSWE useful in your research, please cite our paper:
 
 ---
 
-## License
+## 📄 License
 
 This project is licensed under the CC BY 4.0 License — see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**If you find this project useful, please consider giving it a ⭐ !**
+
+</div>
