@@ -3,7 +3,7 @@
 # BeyondSWE: Can Current Code Agent Survive Beyond Single-Repo Bug Fixing?
 
 [![Paper](https://img.shields.io/badge/📄_Paper-arXiv-b31b1b.svg)]()
-[![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Datasets-blue)](https://huggingface.co/datasets/AweAI-Team/BeyondSWE)
+[![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue)](https://huggingface.co/datasets/AweAI-Team/BeyondSWE)
 [![Website](https://img.shields.io/badge/%F0%9F%8C%90_Project-Website-blue.svg)](https://aweai-team.github.io/BeyondSWE/)
 [![License](https://img.shields.io/badge/License-CC%20BY%204.0-green.svg)](LICENSE)
 
@@ -13,21 +13,35 @@
   <img src="figures/beyondswe.png" width="100%" />
 </p>
 
-<p align="center">
-  <b>BeyondSWE</b> is a comprehensive benchmark that evaluates code agents along two key dimensions — <b>resolution scope</b> and <b>knowledge scope</b> — moving beyond single-repo bug fixing into the real-world deep waters of software engineering.
-  <br>
-  We also introduce <b>SearchSWE</b>, a framework that integrates deep research capabilities with coding agents.
-</p>
+> **BeyondSWE** evaluates code agents along two key dimensions — **resolution scope** and **knowledge scope** — moving beyond single-repo bug fixing into the real-world deep waters of software engineering.
+>
+> We also introduce **[SearchSWE](https://github.com/AweAI-Team/AweAgent)**, a framework that integrates deep research capabilities with coding agents.
+
+## 📑 Table of Contents
+
+- [✨ Highlights](#-highlights)
+- [📋 Benchmark Overview](#-benchmark-overview)
+- [🔍 SearchSWE Framework](#-searchswe-framework)
+- [📈 Results](#-results)
+- [🚀 Quick Start](#-quick-start)
+- [📝 Citation](#-citation)
+- [📄 License](#-license)
+
+---
+
+## 📰 News
+
+- `[2026-03-01]` 🎉 BeyondSWE benchmark and SearchSWE framework released!
 
 ---
 
 ## ✨ Highlights
 
-- **500 real-world instances** across **246 GitHub repositories**, spanning four distinct task settings
-- **Two-dimensional evaluation**: simultaneously expands both resolution scope (local → global) and knowledge scope (within-repo → cross-repo / domain / web)
-- **18x more complex** than SWE-bench Verified: 5.6 files and 209.9 lines per instance on average (vs. 1.3 files / 11.6 lines)
-- **SearchSWE framework**: first standardized benchmark for evaluating deep research in coding, with rigorous anti-cheating mechanisms
-- **Key finding**: frontier models plateau below **45%** on BeyondSWE, despite achieving 80%+ on SWE-bench Verified
+- 🗂️ **500 real-world instances** across **246 GitHub repositories**, spanning four distinct task settings
+- 📐 **Two-dimensional evaluation** — simultaneously expands both resolution scope (local → global) and knowledge scope (within-repo → cross-repo / domain / web)
+- 📊 **18x more complex** than SWE-bench Verified — 5.6 files and 209.9 lines per instance on average (vs. 1.3 files / 11.6 lines)
+- 🔍 **SearchSWE framework** — first standardized benchmark for evaluating deep research in coding, with rigorous anti-cheating mechanisms
+- 🔑 **Key finding** — frontier models plateau below **45%** on BeyondSWE, despite achieving 80%+ on SWE-bench Verified
 
 ---
 
@@ -45,7 +59,7 @@ BeyondSWE covers four task settings that span the full spectrum of real-world so
 ### Comparison with Existing Benchmarks
 
 <p align="center">
-  <img src="figures/beyondswe_statistics.png" width="85%" />
+  <img src="figures/beyondswe_statistics.png" width="75%" />
 </p>
 
 ---
@@ -53,7 +67,7 @@ BeyondSWE covers four task settings that span the full spectrum of real-world so
 ## 🔍 SearchSWE Framework
 
 <p align="center">
-  <img src="figures/beyondswe_searchswe.png" width="90%" />
+  <img src="figures/beyondswe_searchswe.png" width="85%" />
 </p>
 
 **SearchSWE** augments code agents with deep research capabilities, enabling them to interleave web search and code reasoning — just like real developers do.
@@ -90,12 +104,12 @@ BeyondSWE covers four task settings that span the full spectrum of real-world so
 
 ## 🚀 Quick Start
 
-### Installation
+<!-- ### Installation
 
 ```bash
 git clone https://github.com/AweAI-Team/BeyondSWE.git
 cd BeyondSWE
-```
+``` -->
 
 ### Data
 
@@ -104,7 +118,7 @@ The benchmark data is available on Hugging Face:
 ```python
 from datasets import load_dataset
 
-dataset = load_dataset("Awe-AI/BeyondSWE")
+dataset = load_dataset("AweAI-Team/BeyondSWE")
 ```
 
 ### Evaluation with SearchSWE
