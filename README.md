@@ -134,10 +134,14 @@ Please refer to [**AweAgent**](https://github.com/AweAI-Team/AweAgent) for the f
 If you find BeyondSWE useful in your research, please cite our paper:
 
 ```bibtex
-@article{beyondswe2026,
-  title={BeyondSWE: Can Current Code Agent Survive Beyond Single-Repo Bug Fixing?},
-  author={Guoxin Chen and Fanzhe Meng and Jiale Zhao and Minghao Li and Daixuan Cheng and Huatong Song and Jie Chen and Yuzhi Lin and Hui Chen and Xin Zhao and Ruihua Song and Chang Liu and Cheng Chen and Kai Jia and Ji-Rong Wen},
-  year={2026}
+@misc{beyondswe2026,
+      title={BeyondSWE: Can Current Code Agent Survive Beyond Single-Repo Bug Fixing}, 
+      author={Guoxin Chen and Fanzhe Meng and Jiale Zhao and Minghao Li and Daixuan Cheng and Huatong Song and Jie Chen and Yuzhi Lin and Hui Chen and Xin Zhao and Ruihua Song and Chang Liu and Cheng Chen and Kai Jia and Ji-Rong Wen},
+      year={2026},
+      eprint={2603.03194},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2603.03194}, 
 }
 ```
 
