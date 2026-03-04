@@ -32,6 +32,7 @@
 
 ## 📰 News
 
+- `[2026-03-03]` 🎉 Our paper [BeyondSWE](http://arxiv.org/abs/2603.03194) is now on arXiv.
 - `[2026-03-01]` 🎉 BeyondSWE benchmark and SearchSWE framework released!
 
 ---
