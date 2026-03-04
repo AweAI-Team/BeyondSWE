@@ -2,7 +2,7 @@
 
 # BeyondSWE: Can Current Code Agent Survive Beyond Single-Repo Bug Fixing?
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b.svg?logo=arxiv&logoColor=white)](arxiv链接)
+[![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b.svg?logo=arxiv&logoColor=white)](http://arxiv.org/abs/2603.03194)
 [![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue)](https://huggingface.co/datasets/AweAI-Team/BeyondSWE)
 [![Scaffold](https://img.shields.io/badge/%F0%9F%8F%97%EF%B8%8F%20Scaffold-AweAgent-orange.svg)](https://github.com/AweAI-Team/AweAgent)
 [![Website](https://img.shields.io/badge/%F0%9F%8C%90_Project-Website-blue.svg)](https://aweai-team.github.io/BeyondSWE/)
