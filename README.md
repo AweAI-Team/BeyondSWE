@@ -18,6 +18,12 @@
 >
 > We also introduce **[SearchSWE](https://github.com/AweAI-Team/AweAgent)**, a framework that integrates deep research capabilities with coding agents.
 
+## ⚠️ NOTE
+
+We provide a **ready-to-use** evaluation framework in [AweAgent/recipes/beyond_swe](https://github.com/AweAI-Team/AweAgent/tree/main/recipes/beyond_swe) and **pre-built Docker environments** with the dataset on [Hugging Face](https://huggingface.co/datasets/AweAI-Team/BeyondSWE).
+
+Feel free to open an issue or reach out by email for any questions.
+
 ## 📑 Table of Contents
 
 - [✨ Highlights](#-highlights)
