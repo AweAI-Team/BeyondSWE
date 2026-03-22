@@ -38,6 +38,8 @@ Feel free to open an issue or reach out by email for any questions.
 
 ## 📰 News
 
+- `[2026-03-22]` 📊 Updated leaderboard with latest frontier model results: **GLM-5**, **Kimi-K2.5**, **MiniMax-M2.5**, and **Claude Code (Opus 4.6)**. Check out the [**BeyondSWE Leaderboard**](https://aweai-team.github.io/BeyondSWE_leaderboard/)!
+- `[2026-03-22]` 🔧 Released [Harbor-format dataset](https://huggingface.co/datasets/AweAI-Team/BeyondSWE-harbor) for evaluating coding agents (e.g., Claude Code) on BeyondSWE via the [Harbor framework](https://github.com/harbor-framework/harbor).
 - `[2026-03-03]` 🎉 Our paper [BeyondSWE](http://arxiv.org/abs/2603.03194) is now on arXiv.
 - `[2026-03-01]` 🎉 BeyondSWE benchmark and SearchSWE framework released!
 
@@ -136,6 +138,69 @@ snapshot_download(
 ### Evaluation with SearchSWE
 
 Please refer to [**AweAgent**](https://github.com/AweAI-Team/AweAgent) for the full evaluation pipeline, including SearchSWE setup and running instructions.
+
+### Evaluation with Harbor (e.g., Claude Code)
+
+We use the [Harbor framework](https://github.com/harbor-framework/harbor) to evaluate coding agents such as **Claude Code** on BeyondSWE. The Harbor-format dataset is available on Hugging Face.
+
+**1. Install Harbor**
+
+```bash
+uv tool install harbor
+# or
+pip install harbor
+```
+
+See the [Harbor repository](https://github.com/harbor-framework/harbor) for more details.
+
+**2. Configure API credentials**
+
+Claude Code requires an Anthropic API key or OAuth token:
+
+```bash
+export ANTHROPIC_API_KEY=<YOUR-KEY>
+# or, if using OAuth:
+export CLAUDE_CODE_OAUTH_TOKEN=<YOUR-TOKEN>
+```
+
+**3. Download the dataset**
+
+We recommend using `git clone` to avoid HuggingFace API rate limits:
+
+```bash
+# Make sure git-lfs is installed: https://git-lfs.com
+git lfs install
+git clone https://huggingface.co/datasets/AweAI-Team/BeyondSWE-harbor data
+```
+
+This will download two directories into `data/`:
+- `beyondswe/` — 500 Harbor task directories (each containing `task.toml`, `instruction.md`, `environment/`, `tests/`, `solution/`)
+- `doc2repo_test_suite/` — test suite ZIP files for Doc2Repo evaluation (already bundled inside each task's `tests/test_suite.zip`, included here for reference)
+
+**4. Run evaluation**
+
+```bash
+harbor run --path data/beyondswe \
+    --agent claude-code \
+    --model anthropic/claude-opus-4-6 \
+    --n-concurrent 1 \
+    --ak max_turns=200 \
+    --ak reasoning_effort=high \
+    --ak "disallowed_tools='Bash(git log * --all*) Bash(git verify-pack *) Bash(git fsck *) Bash(git cat-file *) Bash(git fetch *) Bash(git pull *)'"
+```
+
+Key parameters:
+- `--agent claude-code` — use Claude Code as the coding agent
+- `--model` — LLM model to use (e.g., `anthropic/claude-opus-4-6`)
+- `--ak max_turns=200` — allow up to 200 agent iterations
+- `--ak reasoning_effort=high` — enable extended thinking
+- `--ak disallowed_tools=...` — restrict git history commands to prevent data leakage
+- `-t <task_name>` — run a specific instance (e.g., `-t pylons_plaster_pastedeploy_pr14`)
+
+Results are saved in the `jobs/` directory. Each trial contains:
+- `result.json` — score, timing, token usage, and exception info
+- `agent/trajectory.json` — full agent trajectory (steps, tool calls, reasoning)
+- `verifier/reward.txt` — evaluation reward (1.0 = resolved, 0.0 = failed; Doc2Repo uses fractional scores)
 
 ---
 
