@@ -4,7 +4,9 @@
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b.svg?logo=arxiv&logoColor=white)](http://arxiv.org/abs/2603.03194)
 [![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue)](https://huggingface.co/datasets/AweAI-Team/BeyondSWE)
-[![Scaffold](https://img.shields.io/badge/%F0%9F%8F%97%EF%B8%8F%20Scaffold-AweAgent-orange.svg)](https://github.com/AweAI-Team/AweAgent)
+[![Harbor-format Huggingface Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Harbor%20format%20Benchmark-black)](https://huggingface.co/datasets/AweAI-Team/BeyondSWE)
+[![Scaffold](https://img.shields.io/badge/%F0%9F%8F%97%EF%B8%8F%20Scaffold%20(Official)-AweAgent-orange.svg)](https://github.com/AweAI-Team/AweAgent)
+[![Evaluation Framework](https://img.shields.io/badge/%F0%9F%8F%97%EF%B8%8F%20Claude%20Code%20Evaluation%20Framework-harbor-yellow.svg)](https://github.com/AweAI-Team/AweAgent)
 [![Website](https://img.shields.io/badge/%F0%9F%8C%90_Project-Website-blue.svg)](https://aweai-team.github.io/BeyondSWE/)
 [![License](https://img.shields.io/badge/License-CC%20BY%204.0-green.svg)](LICENSE)
 
@@ -31,6 +33,10 @@ Feel free to open an issue or reach out by email for any questions.
 - [🔍 SearchSWE Framework](#-searchswe-framework)
 - [📈 Results](#-results)
 - [🚀 Quick Start](#-quick-start)
+  - [Data](#data)
+  - [Evaluation with SearchSWE](#evaluation-with-searchswe)
+  - [Evaluation with Harbor (e.g., Claude Code)](#evaluation-with-harbor-eg-claude-code)
+- [💻 Evaluation within the Harbor framework](#-eva)
 - [📝 Citation](#-citation)
 - [📄 License](#-license)
 
@@ -123,7 +129,9 @@ cd BeyondSWE
 
 ### Data
 
-The benchmark data is available on Hugging Face:
+The benchmark data is available on Hugging Face in two formats:
+
+**Standard Format** — for evaluation with [AweAgent/SearchSWE](https://github.com/AweAI-Team/AweAgent):
 
 ```python
 from huggingface_hub import snapshot_download
@@ -135,37 +143,18 @@ snapshot_download(
 )
 ```
 
-### Evaluation with SearchSWE
+**Harbor Format** — for evaluation with coding agents (e.g., Claude Code) via the [Harbor framework](https://github.com/harbor-framework/harbor). The dataset is available on 🤗 [BeyondSWE-harbor](https://huggingface.co/datasets/AweAI-Team/BeyondSWE-harbor):
 
-Please refer to [**AweAgent**](https://github.com/AweAI-Team/AweAgent) for the full evaluation pipeline, including SearchSWE setup and running instructions.
-
-### Evaluation with Harbor (e.g., Claude Code)
-
-We use the [Harbor framework](https://github.com/harbor-framework/harbor) to evaluate coding agents such as **Claude Code** on BeyondSWE. The Harbor-format dataset is available on Hugging Face.
-
-**1. Install Harbor**
-
-```bash
-uv tool install harbor
-# or
-pip install harbor
+```python
+from huggingface_hub import snapshot_download
+snapshot_download(
+    repo_id="AweAI-Team/BeyondSWE-harbor",
+    repo_type="dataset",
+    local_dir="data",
+)
 ```
 
-See the [Harbor repository](https://github.com/harbor-framework/harbor) for more details.
-
-**2. Configure API credentials**
-
-Claude Code requires an Anthropic API key or OAuth token:
-
-```bash
-export ANTHROPIC_API_KEY=<YOUR-KEY>
-# or, if using OAuth:
-export CLAUDE_CODE_OAUTH_TOKEN=<YOUR-TOKEN>
-```
-
-**3. Download the dataset**
-
-We recommend using `git clone` to avoid HuggingFace API rate limits:
+**We recommend** using `git clone` to avoid HuggingFace API rate limits:
 
 ```bash
 # Make sure git-lfs is installed: https://git-lfs.com
@@ -177,7 +166,35 @@ This will download two directories into `data/`:
 - `beyondswe/` — 500 Harbor task directories (each containing `task.toml`, `instruction.md`, `environment/`, `tests/`, `solution/`)
 - `doc2repo_test_suite/` — test suite ZIP files for Doc2Repo evaluation (already bundled inside each task's `tests/test_suite.zip`, included here for reference)
 
-**4. Run evaluation**
+### Evaluation with SearchSWE
+
+Please refer to [**AweAgent**](https://github.com/AweAI-Team/AweAgent) for the full evaluation pipeline, including SearchSWE setup and running instructions.
+
+### Evaluation with Harbor (e.g., Claude Code)
+
+We use the [Harbor framework](https://github.com/harbor-framework/harbor) to evaluate coding agents such as **Claude Code** on BeyondSWE.
+
+**1. Install Harbor**
+
+```bash
+uv tool install harbor
+# or
+pip install harbor
+```
+
+You can see the [Harbor repository](https://github.com/harbor-framework/harbor) for more details.
+
+**2. Configure API credentials**
+
+To evaluate Claude Code, you will need an Anthropic API key or OAuth token.:
+
+```bash
+export ANTHROPIC_API_KEY=<YOUR-KEY>
+# or, if using OAuth:
+export CLAUDE_CODE_OAUTH_TOKEN=<YOUR-TOKEN>
+```
+
+**3. Run evaluation**
 
 ```bash
 harbor run --path data/beyondswe \
@@ -192,12 +209,19 @@ harbor run --path data/beyondswe \
 Key parameters:
 - `--agent claude-code` — use Claude Code as the coding agent
 - `--model` — LLM model to use (e.g., `anthropic/claude-opus-4-6`)
+- `--n-concurrent` - concurrency limit
 - `--ak max_turns=200` — allow up to 200 agent iterations
 - `--ak reasoning_effort=high` — enable extended thinking
 - `--ak disallowed_tools=...` — restrict git history commands to prevent data leakage
 - `-t <task_name>` — run a specific instance (e.g., `-t pylons_plaster_pastedeploy_pr14`)
 
-Results are saved in the `jobs/` directory. Each trial contains:
+To see all supported agents, and other options run:
+```bash
+harbor run --help
+```
+
+Results will be saved in the `jobs/` directory. Each trial contains:
+
 - `result.json` — score, timing, token usage, and exception info
 - `agent/trajectory.json` — full agent trajectory (steps, tool calls, reasoning)
 - `verifier/reward.txt` — evaluation reward (1.0 = resolved, 0.0 = failed; Doc2Repo uses fractional scores)
