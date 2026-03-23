@@ -4,9 +4,9 @@
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b.svg?logo=arxiv&logoColor=white)](http://arxiv.org/abs/2603.03194)
 [![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue)](https://huggingface.co/datasets/AweAI-Team/BeyondSWE)
-[![Harbor-format Huggingface Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Harbor%20format%20Benchmark-black)](https://huggingface.co/datasets/AweAI-Team/BeyondSWE)
+[![Harbor-format Huggingface Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Harbor%20format%20Benchmark-black)](https://huggingface.co/datasets/AweAI-Team/BeyondSWE-harbor)
 [![Scaffold](https://img.shields.io/badge/%F0%9F%8F%97%EF%B8%8F%20Scaffold%20(Official)-AweAgent-orange.svg)](https://github.com/AweAI-Team/AweAgent)
-[![Evaluation Framework](https://img.shields.io/badge/%F0%9F%8F%97%EF%B8%8F%20Claude%20Code%20Evaluation%20Framework-harbor-yellow.svg)](https://github.com/AweAI-Team/AweAgent)
+[![Evaluation Framework](https://img.shields.io/badge/%F0%9F%8F%97%EF%B8%8F%20Claude%20Code%20Evaluation%20Framework-harbor-yellow.svg)](https://github.com/harbor-framework/harbor)
 [![Website](https://img.shields.io/badge/%F0%9F%8C%90_Project-Website-blue.svg)](https://aweai-team.github.io/BeyondSWE/)
 [![License](https://img.shields.io/badge/License-CC%20BY%204.0-green.svg)](LICENSE)
 
