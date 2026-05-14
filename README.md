@@ -43,7 +43,7 @@ Feel free to open an issue or reach out by email for any questions.
 ---
 
 ## 📰 News
-
+- `[2026-03-22]` 📝 Released the trajectories and analysis markdown for "Codex + GPT5.4 xhigh", Openhands and SearchSWE with DeepSeek v4 pro
 - `[2026-03-22]` 📊 Updated leaderboard with latest frontier model results: **GLM-5**, **Kimi-K2.5**, **MiniMax-M2.5**, and **Claude Code (Opus 4.6)**. Check out the [**BeyondSWE Leaderboard**](https://aweai-team.github.io/BeyondSWE_leaderboard/)!
 - `[2026-03-22]` 🔧 Released [Harbor-format dataset](https://huggingface.co/datasets/AweAI-Team/BeyondSWE-harbor) for evaluating coding agents (e.g., Claude Code) on BeyondSWE via the [Harbor framework](https://github.com/harbor-framework/harbor).
 - `[2026-03-03]` 🎉 Our paper [BeyondSWE](http://arxiv.org/abs/2603.03194) is now on arXiv.
