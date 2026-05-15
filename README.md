@@ -34,6 +34,7 @@ Feel free to open an issue or reach out by email for any questions.
 - [📈 Results](#-results)
 - [🚀 Quick Start](#-quick-start)
   - [Data](#data)
+  - [Trajectories](#trajectories)
   - [Evaluation with SearchSWE](#evaluation-with-searchswe)
   - [Evaluation with Harbor (e.g., Claude Code)](#evaluation-with-harbor-eg-claude-code)
 - [💻 Evaluation within the Harbor framework](#-eva)
@@ -165,6 +166,39 @@ git clone https://huggingface.co/datasets/AweAI-Team/BeyondSWE-harbor data
 This will download two directories into `data/`:
 - `beyondswe/` — 500 Harbor task directories (each containing `task.toml`, `instruction.md`, `environment/`, `tests/`, `solution/`)
 - `doc2repo_test_suite/` — test suite ZIP files for Doc2Repo evaluation (already bundled inside each task's `tests/test_suite.zip`, included here for reference)
+
+### Trajectories
+
+We release agent trajectories and analyses for selected runs in the [`trajectories/`](trajectories) directory:
+
+- `DeepSeek-V4-Pro/OpenHands/dpsk_v4_pro_max_nosearch.jsonl` — DeepSeek-V4-Pro on the OpenHands scaffold
+- `DeepSeek-V4-Pro/SearchSWE/dpsk_v4_pro_max_search.jsonl` — DeepSeek-V4-Pro on SearchSWE
+- `GPT-5.4-XHigh/Codex/codex_searchswe.jsonl` — GPT-5.4-XHigh on Codex (SearchSWE), with companion analysis in [`web_cheating_analysis.md`](trajectories/GPT-5.4-XHigh/Codex/web_cheating_analysis.md)
+
+All `.jsonl` files are tracked with **[Git LFS](https://git-lfs.com)** because each one exceeds GitHub's 100 MB per-file limit (total ~749 MB).
+
+**Option A — fresh clone (recommended).** LFS files are pulled automatically:
+
+```bash
+# Install git-lfs once per machine: https://git-lfs.com
+git lfs install
+git clone https://github.com/AweAI-Team/BeyondSWE.git
+```
+
+**Option B — already cloned without LFS.** Run inside the existing checkout:
+
+```bash
+cd BeyondSWE
+git lfs install
+git lfs pull
+```
+
+> **Tip — skip trajectories on initial clone.** If you do not need the trajectory files right away, defer the ~749 MB download:
+> ```bash
+> GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/AweAI-Team/BeyondSWE.git
+> # later, fetch only what you need:
+> git lfs pull --include="trajectories/GPT-5.4-XHigh/**"
+> ```
 
 ### Evaluation with SearchSWE
 
